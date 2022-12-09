@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>random.</title>
+    <link rel="icon" href="Ricon.png">
+
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+        }
+
+        body {
+            /*background-color: rgb(199, 199, 199);*/
+            background-image: url("ghib.png");
+            display: flex;
+            justify-content: left;
+            margin-left: 100px;
+            align-items: top;
+            margin-top: 50px;
+            height: 100vh;
+        }
+
+        .container {
+            width: 35%;
+            height: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgba(16, 20, 68, 0.541);
+            border-radius: 25px;
+            box-shadow: 0px 0px 30px black;
+            backdrop-filter: blur(5px);
+
+        }
+        input {
+            background-color: rgba(64, 171, 233, 0.534);
+            height: 40px;
+            width: 50%;
+            border-radius: 10px;
+            border: none;
+            box-shadow: 0px 0px 10px rgba(27, 79, 146, 0.911);
+            color: rgb(255, 255, 255);
+            font-size: 20px;
+            padding-left: 5px;
+        }
+        button {
+            margin-top: 40px;
+            margin-inline: 20px;
+            /*height: 30px;
+            width: 80px;*/
+            background-color: rgb(27, 79, 146, 0.911);
+            border: 2px solid white;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+            font-weight: 800;
+            padding: 5px 30px;
+        }
+        button:hover {
+            background-color: rgb(16, 20, 68, 0.541);
+            transform: scale(01.2);
+        }
+        ul {
+            width: 70%;
+        }
+        li {
+            margin: 3px 0px 0px 0px;
+            font-size: 25px;
+        }
+        h3 {
+            position: absolute;
+            padding: 10px 20px;
+            padding-top: 60px;
+            background-color: rgb(16, 20, 68, 0.541);
+            border-radius: 25px;
+            box-shadow: 0px 0px 15px black;
+            right: 500px;
+            top: 600px;
+            height: 200px;
+            width: 500px;
+            text-align: center;
+            text-justify: center;
+            font-size: 70px;
+
+        }
+        h2 {
+            color: rgb(28, 154, 192);
+            text-shadow: 10px black;
+            margin-left: -240px;
+            font-size: 30px;
+        }
+        h4 {
+            position: absolute;
+            height: 100px;
+            width: 100px;
+            border-radius: 50px;
+            box-shadow: 0px 0px 15px black;
+            right: 80px;
+            bottom: 30px;
+            background-color: rgba(25, 31, 100, 0.58);
+            transition: all 0.2s ease;
+            
+        }
+        h4:hover {
+            background-color: rgba(30, 38, 124, 0.767);
+            transform: scale(01.2);
+        }
+        h5 {
+            color: rgb(172, 238, 238);
+            text-shadow: 10px black;
+            margin-left: -300px;
+            font-size: 30px;
+        }
+        h6 {
+            position: absolute;
+            color: rgb(172, 238, 238);
+            text-shadow: 10px black;
+            margin-left: 200px;
+            margin-top: 650px;
+            font-size: 30px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>random.</h2>
+        <input type="text" placeholder="your input" value="" id="TestToAdd">
+        <div class="buttons">
+            <button onclick="AddChoice()">ADD</button>
+            <button onclick="ShowRes()">RESULT</button>
+            
+        </div>
+        <h5>Input List :</h5>
+        <ul id="List">
+            
+        </ul>
+    </div>
+
+    <div class="Refr">
+        <h4 onclick="window.location.reload()"></h4>
+    </div>
+
+    <div class="Res">
+        <h6>Result :</h6>
+        <h3 id="Res"></h3>
+    </div>
+    
+    <script>
+        //let TestToAdd_element = document.getElementById("TestToAdd");
+        const List_element = document.getElementById("List");
+        const Res = document.getElementById("Res");
+
+        let Choices = [];
+        
+        function AddChoice() {
+            let TestToAdd_element = document.getElementById("TestToAdd");
+            if(TestToAdd_element.value == "") {
+                return
+            }
+            Choices.push(TestToAdd_element.value);
+        
+
+            let NewChoice = document.createElement("li");
+            NewChoice.innerHTML = TestToAdd_element.value;
+
+            List_element.appendChild(NewChoice);
+            TestToAdd_element.value = "";
+            
+        }
+        
+        function ShowRes() {
+            let randomIndex = Math.floor(Math.random() * Choices.length);
+            let Result = Choices[randomIndex];
+            Res.innerHTML = Result
+        }
+
+    </script>
+
+
+
+</body>
+</html>
